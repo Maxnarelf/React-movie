@@ -1,8 +1,8 @@
-import React, { Component } from "react";
+import React from "react";
 import MovieItem from "./MoviesItem";
 import { API_URL, API_KEY_3 } from "../../Api/Api";
 
-export default class MovieList extends Component {
+export default class MovieList extends React.Component {
   constructor() {
     super();
 
