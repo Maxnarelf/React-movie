@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Filters from './Filters/Filters';
+import Genres from './Filters/Genres';
 import MoviesList from './Movies/MoviesList'
 import Header from "./Header/Header";
 import Slider from './Slider/Slider';
@@ -11,46 +12,59 @@ export default class App extends Component {
 
         this.state = {
             filters: {
-                sort_by: "popularity.desc"
-            }
+                sort_by: "popularity.desc",
+                primary_release_year: "2021",
+                with_genres: []
+            },
+            page: 1,
+            total_pages: ""
         }
     }
 
     onChangeFilters = event => {
-        const newFilters = {...this.state.filters, [event.target.name]:[event.target.value]}
+        const value = event.target.value;
+        const name = event.target.name;
         this.setState(prevState => ({
-            filters: newFilters
-        }))
-        
+          filters: {
+            ...prevState.filters,
+            [name]: value
+          }
+        }));
+    };  
+
+    onChangePagination = ({ page, total_pages = this.state.total_pages }) =>{
+        this.setState({
+            page,
+            total_pages
+        })
     }
     render() {
-        const {filters} = this.state;
+        const {filters: {with_genres}} = this.state;
+        const {filters, page, total_pages } = this.state;
         return (
             <div className="container">
                 <Header />
                 <Slider />
                 <div className="menu">
-                <Filters filters={filters} onChangeFilters={this.onChangeFilters}/> 
+                <Filters 
+                    page={page} 
+                    total_pages={total_pages}
+                    filters={filters} 
+                    onChangeFilters={this.onChangeFilters} 
+                    onChangePage={this.onChangePage}
+                    onChangePagination={this.onChangePagination}
+                /> 
                     <div className="menu_left">
-                        <h3>Фильтры: </h3>
-                        <h3>Фильтры:</h3>
-                        <h3>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ratione ipsum quae at recusandae ut? Eius nesciunt ipsum, aliquam tenetur dolorum quaerat inventore similique voluptatum eos tempora! Soluta deserunt tempora in neque earum. Praesentium ad adipisci veniam, eius quasi non illum.:</h3>
-                        <h3>Фильтры:</h3>
-                        <h3>Фильтры:</h3>
-                        <h3>Фильтры:</h3>
-                        <h3>Фильтры:</h3>
-                        <h3>Фильтры:</h3>
-                        <h3>Фильтры:</h3>
-                        <h3>Фильтры:</h3>
-                        <h3>Фильтры:</h3>
-                        <h3>Фильтры:</h3>
-                        <h3>Фильтры:</h3>
-                        <h3>Фильтры:</h3>
-                        <h3>Фильтры:</h3>
+                        <Genres with_genres={with_genres} onChangeFilters={this.onChangeFilters} />
                     </div>
                      
-                     <MoviesList filters={filters}/>
-                 </div>
+                     <MoviesList 
+                        filters={filters} 
+                        page={page} 
+                        
+                        onChangePagination={this.onChangePagination}
+                     />
+                </div>
                 
                    
                 

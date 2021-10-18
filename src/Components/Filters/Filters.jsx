@@ -1,25 +1,33 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import SortBy from './SortBy';
+import PrimaryReleaseYear from './PrimaryReleaseYear';
+import Pagination from './Pagination';
+// import Genres from './Genres';
+import '../../index.css'
+
 
 export default class Filters extends Component {
     render() {
-        const {filters: {sort_by}, onChangeFilters} = this.props;
+        const {filters: {sort_by, primary_release_year }, onChangeFilters, total_pages, page, onChangePagination} = this.props;
         return (
             <form className="filter">
-                <div className="form-group">
-                    <label htmlFor="sort_by">Сортировать по:</label>
-                    <select 
-                        id="sort_by"
-                        className="form-control"  
-                        name="sort_by"
-                        value={sort_by} 
-                        onChange={onChangeFilters}
-                    >
-                        <option value="popularity.desc">Популярные по убыванию</option>
-                        <option value="popularity.asc">Популярные по возрастанию</option>
-                        <option value="vote_average.desc">Рейтинг по убыванию</option>
-                        <option value="vote_average.asc">Рейтинг по возрастанию</option>
-                    </select>
-                </div>
+               
+                
+                <PrimaryReleaseYear
+                    primary_release_year={primary_release_year}
+                    onChangeFilters={onChangeFilters}
+                />
+                
+                <Pagination
+                    page={page}
+                    total_pages={total_pages}
+                    onChangePagination={onChangePagination}
+                    />
+                 <SortBy
+                    sort_by={sort_by} 
+                    onChange={onChangeFilters}
+                />
+               
             </form>
         )
     }
