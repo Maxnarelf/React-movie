@@ -9,6 +9,7 @@ import '../../index.css'
 export default class Filters extends Component {
     render() {
         const {filters: {sort_by, primary_release_year }, onChangeFilters, total_pages, page, onChangePagination} = this.props;
+        
         return (
             <form className="filter">
                
@@ -25,8 +26,10 @@ export default class Filters extends Component {
                     />
                  <SortBy
                     sort_by={sort_by} 
-                    onChange={onChangeFilters}
+                    onChangeFilters={onChangeFilters}
                 />
+
+                
                
             </form>
         )

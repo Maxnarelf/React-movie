@@ -1,10 +1,13 @@
 import React, { Component } from 'react'
-// import Login from '../login/Login';
+import Login from '../Login/Login';
+import User from './User';
 import '../../index.css'
 
 
 export default class Header extends Component {
+    
     render() {
+        const { user, updateSessionId} =this.props
         return (
             <div>
                 <div className="container">
@@ -12,9 +15,10 @@ export default class Header extends Component {
                     <div className="logo">
                             React-movies
                             </div>
-                            <input type="text" placeholder="Поиск"/>
-                            <button className="btn_header">Login</button>
-                            {/* <Login/> */}
+                            <input className="header_input"type="text" placeholder="Поиск"/>
+                            {/* <button className="btn_header">Login</button> */}
+                            {user ?  <User/> : <Login updateSessionId={updateSessionId}/>}
+                            
                      </div>
                   </div>
             </div>
