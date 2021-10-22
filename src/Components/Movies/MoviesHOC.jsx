@@ -1,5 +1,5 @@
 import React from "react";
-import CallApi from "../../Api/api";
+import CallApi from "../../api/api";
 
 
 export default Component =>

@@ -4,6 +4,7 @@ import queryString from 'query-string';
 export const API_URL = "https://api.themoviedb.org/3";
 
 export const API_KEY_3 = "cc194d060181fb880eda7d9ca2f77ad3";
+export const IMG_URL = 'https://image.tmdb.org/t/p/original';
 
 
 export  const fetchApi = (url, options = {}) => {

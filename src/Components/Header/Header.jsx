@@ -1,23 +1,31 @@
 import React, { Component } from 'react'
-import Login from '../Login/Login';
 import User from './User';
+import Search from '../Search/Search';
+import { withAuth } from '../../hoc/withAuth';
+import { Link } from 'react-router-dom';
 import '../../index.css'
 
-
-export default class Header extends Component {
+class Header extends Component {
     
     render() {
-        const { user, updateSessionId} =this.props
+        const { auth, authActions } =this.props
         return (
             <div>
                 <div className="container">
                  <div className="header">
-                    <div className="logo">
+                    <Link className="logo" to="/">
                             React-movies
-                            </div>
-                            <input className="header_input"type="text" placeholder="Поиск"/>
-                            {/* <button className="btn_header">Login</button> */}
-                            {user ?  <User/> : <Login updateSessionId={updateSessionId}/>}
+                            </Link>
+                                <Search />
+                            {auth?.user ? ( <User/> ) : ( 
+                            <button 
+                                className="btn_header"
+                                type="button"
+                                onClick={authActions.toggleLoginModal}
+                            >
+                                Login
+                            </button>
+                            )}
                             
                      </div>
                   </div>
@@ -25,3 +33,4 @@ export default class Header extends Component {
         )
     }
 }
+export default withAuth(Header)

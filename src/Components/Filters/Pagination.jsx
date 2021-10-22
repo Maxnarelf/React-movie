@@ -33,24 +33,8 @@ export default class Pagination extends React.Component {
                          {page} of {total_pages}
                     </span>
                     <button type="button" className="btn" onClick={this.nextPage}>&raquo;</button>
-                </div>
-        {/* <ul className="pagination mb-0 mr-3">
-          <li
-            className={classNames("page-item", {
-              disabled: page === 1
-            })}
-          >
-            <span className="page-link" onClick={this.prevPage(page)}>
-               Назад
-            </span>
-          </li>
-          <li className="page-item">
-            <span className="page-link" onClick={this.nextPage}>
-              Вперед
-            </span>
-          </li>
-        </ul> */}
-        
+            </div>
+      
       </nav>
     );
   }

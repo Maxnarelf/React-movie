@@ -7,8 +7,7 @@ const Modal = ({showModal, toggleModal, children}) => {
             <div className={showModal ? "modal__content active" : "modal__content"} onClick={e => e.stopPropagation()}>
                     {children}
             </div>
-            
-        </div>
+       </div>
     ) 
 
 }

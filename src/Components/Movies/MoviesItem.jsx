@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-
+import { Link } from "react-router-dom";
 export default class MoviesItem extends Component {
   render() {
     const { item } = this.props;
@@ -14,7 +14,7 @@ export default class MoviesItem extends Component {
          
         />
         <div className="card-body">
-          <h3 className="card-title">{item.title}</h3>
+          <Link to={`/movie/${item.id}`} className="card-title">{item.title}</Link>
           <div className="class">{item.release_date}</div>
           <div className="card-text">Рейтинг: {item.vote_average}</div>
           <div className="{}">

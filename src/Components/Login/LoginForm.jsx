@@ -1,17 +1,18 @@
 import React from 'react';
-import CallApi from '../../Api/api';
+import CallApi from '../../api/api';
 import classNames from 'classnames';
-import { AppContext } from '../App';
-// import Modal from './Modal/Modal';
+import {withAuth} from '../../hoc/withAuth'
 
- class LoginForm extends React.Component {
+
+class LoginForm extends React.Component {
     state = {
         username: "",
         password: "",
         errors: {},
         submitting: false
     };
-    onChange = e =>{
+
+    onChange = e => {
         const name = e.target.name
         const value = e.target.value
         this.setState(prevState => ({
@@ -23,24 +24,33 @@ import { AppContext } from '../App';
             }
         }))
     }
+    hendleBlur = () =>{
+        const errors = this.validateFields();
+        if (Object.keys(errors).length > 0) {
+            this.setState(prevState => ({
+                errors: {
+                    ...prevState.errors,
+                    ...errors
+                }
+            }))
+        }
+        
+    }
     validateFields = () => {
         const errors = {};
-
         if(this.state.username ==="") {
             errors.username = "Not empty"
         }
         return errors;
-        
-       
-    }
+     }
     
     onSubmit = () => {
          this.setState({
             submitting: true
         })
-          // цепочка промисов
-            CallApi.get("/authentication/token/new")
-           .then(data => {
+            let session_id = null;
+           CallApi.get("/authentication/token/new")
+            .then(data => {
                 return  CallApi.post("/authentication/token/validate_with_login", {
                     body:{
                         username: this.state.username,
@@ -67,9 +77,10 @@ import { AppContext } from '../App';
                 .then(user =>{
                     this.setState({
                         submitting: false
-                    }, () => {
-                        this.props.updateUser(user);
                     })
+                    
+                    this.props.authActions?.updateUser(user, session_id);
+                    this.props.authActions?.toggleLoginModal();
                 })
                 .catch(error => {
                     this.setState({
@@ -96,22 +107,11 @@ import { AppContext } from '../App';
            this.onSubmit()
         }
     }
-    hendleBlur = () =>{
-        const errors = this.validateFields();
-        if (Object.keys(errors).length > 0) {
-            this.setState(prevState => ({
-                errors: {
-                    ...prevState.errors,
-                    ...errors
-                }
-            }))
-        }
-        
-    }
+    
 
     getClassForInput = key =>
         classNames("form-control", {
-            "invalid": this.state.errors[key] 
+            invalid: this.state.errors[key] 
     })
     render() {
         const {username, password, errors, submitting} = this.state
@@ -172,13 +172,5 @@ import { AppContext } from '../App';
     }
 }
 
- const LoginFormContainer = (props) => {
-    return (
-        <AppContext.Consumer>
-            {context => <LoginForm updateUser={context.updateUser} {...props}/>}
-        </AppContext.Consumer>
-    )
-}
 
-LoginFormContainer.displayName = "LoginFormContainer"
-export default LoginFormContainer;
+export default withAuth(LoginForm);

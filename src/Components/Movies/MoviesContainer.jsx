@@ -66,8 +66,7 @@ export default class MoviesContainer extends React.Component {
   render() {
     const { movies } = this.state;
     
-    return (
-     <MoviesList movies={movies}/>
-    );
+    return <MoviesList movies={movies}/>
+   
   }
 }

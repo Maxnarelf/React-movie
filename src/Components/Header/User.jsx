@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { fetchApi, API_URL, API_KEY_3 } from '../../Api/api';
-import AppContextHOC from '../HOC/AppContextHOC';
+import { fetchApi, API_URL, API_KEY_3 } from '../../api/api';
+import { withAuth } from '../../hoc/withAuth';
 import "./Dropdown/Dropdown.css";
 
 class User extends Component {
@@ -15,26 +15,24 @@ class User extends Component {
       };
     
       handleLogOut = () => {
-        fetchApi(`${API_URL}/authentication/session?api_key=${API_KEY_3}`, {
+        fetchApi(`${API_URL}/authentication/session?api_key=${API_KEY_3}&session_id=${this.props.auth.session_id}`, {
             method: "DELETE",
             mode: "cors",
             headers: {
                 "Content-type": "application/json"
             },
-            body: JSON.stringify({
-                session_id: this.props.session_id
-            })
+           
         }).then(() => {
-            this.props.onLogOut();
+            this.props.authActions.onLogOut();
         });
       };
 
     render() {
-        const {user} = this.props
+        const {auth} = this.props
         return (
            <div className="Container">
             <div className="Wrapper">
-            <img src={`https://secure.gravatar.com/avatar/${user.avatar.gravatar.hash}.jpg?s=64"`} alt=""
+            <img src={`https://secure.gravatar.com/avatar/${auth.user.avatar.gravatar.hash}.jpg?s=64"`} alt=""
                 onClick={this.toggleShow}/>
             
               {this.state.show && (
@@ -53,15 +51,4 @@ class User extends Component {
     }
 }
 
-//  const UserContainer = (props) => {
-//     return (
-//     <AppContext.Consumer>
-//         {context => {
-//             return <User {...context}{...props}/>
-//         }}
-//     </AppContext.Consumer>
-//     )
-// }
-// UserContainer.displayName = "UserContainer";   
-
-export default AppContextHOC(User);
+export default withAuth(User);
