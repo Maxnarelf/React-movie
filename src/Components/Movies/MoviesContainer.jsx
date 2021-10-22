@@ -1,7 +1,7 @@
 import React from "react";
 import MoviesList from "./MoviesList";
 import queryString from "query-string";
-import { API_URL, API_KEY_3 } from "../../Api/Api";
+import { API_URL, API_KEY_3 } from "../../api/api";
 
 export default class MoviesContainer extends React.Component {
   constructor() {
@@ -55,7 +55,8 @@ export default class MoviesContainer extends React.Component {
             this.getMovies(this.props.filters, this.props.page); 
         }
         if (this.props.filters.primary_release_year !== prevProps.filters.primary_release_year) {
-            this.getMovies(this.props.filters, this.props.page); 
+            this.getMovies(this.props.filters, 1); 
+            this.props.onChangePagination(1);
         }
         if (this.props.filters.with_genres !== prevProps.filters.with_genres){
             this.getMovies(this.props.filters, this.props.page);

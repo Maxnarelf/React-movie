@@ -14,7 +14,7 @@ import * as authActions from '../redux/auth/auth.actions';
   });
   
 export const withAuth = Component => connect(mapStateToProps, mapDispatchToProps)(
-  class withAuth extends React.Component {
+  class WithAuth extends React.Component {
     render() {
       return (
        <Component {...this.props}/>

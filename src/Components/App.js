@@ -22,13 +22,13 @@ class App extends Component {
         
         return  (
             <BrowserRouter>
-            <div className="container">
-                <Header />
-                {auth?.showLoginModal && <Login />}
-                <Slider />
-                <Route exact path="/" component={MoviesPage} />
-                <Route path="/movie/:id" component={MoviePage} />
-            </div>
+                <div className="container">
+                    <Header />
+                    {auth?.showLoginModal && <Login />}
+                    <Slider />
+                    <Route exact path="/" component={MoviesPage} />
+                    <Route path="/movie/:id" component={MoviePage} />
+                </div>
             </BrowserRouter>
         
         )

@@ -29,7 +29,7 @@ export default class Search extends Component {
         const {searchTerm} = this.state;
         return (
             <div>
-                 <form action="" onSubmit={this.handleSumbit}>
+                 <form action="" onSubmit={this.handleSubmit}>
                       <input 
                         className="header_input" 
                         type="search" 

@@ -50,7 +50,8 @@ export default Component =>
             this.getMovies(this.props.filters, this.props.page); 
         }
         if (this.props.filters.primary_release_year !== prevProps.filters.primary_release_year) {
-            this.getMovies(this.props.filters, this.props.page); 
+            this.getMovies(this.props.filters, 1); 
+            this.props.onChangePagination(1);
         }
         if (this.props.filters.with_genres !== prevProps.filters.with_genres){
             this.getMovies(this.props.filters, this.props.page);
