@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from "prop-types";
+import '../../Styles/selection.css'
 
 export default class SortBy extends Component {
     static propTypes = {
@@ -30,17 +31,17 @@ export default class SortBy extends Component {
         const {sort_by, onChangeFilters, options} = this.props;
         
         return (
-            <div className="form-group">
-                    <label htmlFor="sort_by">Сортировать по:</label>
+            <div className="sort_filter">
+                    <label htmlFor="sort_by"></label>
                     <select 
                         id="sort_by"
-                        className="form-control"  
+                        className="sel_style"  
                         name="sort_by"
                         value={sort_by}
                         onChange={onChangeFilters}
                     >
                         {options.map(option =>(
-                            <option key={option.value} value={option.value}>{option.label}</option>
+                            <option classname="opt_sort" key={option.value} value={option.value}>{option.label}</option>
                         ))}
                         
                     </select>

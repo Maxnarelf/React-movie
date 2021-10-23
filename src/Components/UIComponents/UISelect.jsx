@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-
+import '../../Styles/selection.css';
 
 export default class UISelect extends React.Component {
   static propTypes = {
@@ -14,11 +14,11 @@ export default class UISelect extends React.Component {
     const { id, name, value, onChange, labelText, children } = this.props;
     console.log("UISelect render");
     return (
-      <div className="form-group">
-        <label htmlFor={id}>{labelText}</label>
+      <div className="year_block">
+        <label  className="year" htmlFor={id}>{labelText}</label>
         <select
           id={id}
-          className="form-control"
+          className="sel_style"
           name={name}
           value={value}
           onChange={onChange}

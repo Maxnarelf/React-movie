@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import Modal from './Modal/Modal';
 import LoginForm from './LoginForm';
 import { withAuth } from '../../hoc/withAuth';
-import '../../index.css';
+
 
 class Login extends Component {
     render() {

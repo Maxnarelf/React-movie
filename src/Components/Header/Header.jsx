@@ -3,7 +3,7 @@ import User from './User';
 import Search from '../Search/Search';
 import { withAuth } from '../../hoc/withAuth';
 import { Link } from 'react-router-dom';
-import '../../index.css'
+import '../../Styles/header.css'
 
 class Header extends Component {
     
@@ -12,12 +12,12 @@ class Header extends Component {
         return (
             <div>
                 <div className="container">
-                 <div className="header">
-                    <Link className="logo" to="/">
+                    <div className="header">
+                        <Link className="logo" to="/">
                             React-movies
-                            </Link>
-                                <Search />
-                            {auth?.user ? ( <User/> ) : ( 
+                        </Link>
+                        <Search />
+                        {auth?.user ? ( <User/> ) : ( 
                             <button 
                                 className="btn_header"
                                 type="button"
@@ -25,10 +25,10 @@ class Header extends Component {
                             >
                                 Login
                             </button>
-                            )}
+                        )}
                             
-                     </div>
-                  </div>
+                    </div>
+                </div>
             </div>
         )
     }

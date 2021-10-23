@@ -12,26 +12,26 @@ export default class Filters extends Component {
         
         return (
             <form className="filter">
-               
-                
-                <PrimaryReleaseYear
+              
+                 <PrimaryReleaseYear
                     primary_release_year={primary_release_year}
                     onChangeFilters={onChangeFilters}
                 />
-                
+                <div className="pagin_top">
                 <Pagination
                     page={page}
                     total_pages={total_pages}
                     onChangePagination={onChangePagination}
                     />
-                 <SortBy
+                </div>
+                <SortBy
                     sort_by={sort_by} 
                     onChangeFilters={onChangeFilters}
                 />
-
                 
-               
-            </form>
+                
+            
+           </form>
         )
     }
 }

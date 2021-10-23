@@ -1,0 +1,22 @@
+.slider{
+    width:100%;
+    height: 250px;
+    max-width: 958px;
+    min-width: 430px;
+    background-color: #090c10;
+}
+.slider_content{
+  width: 100%;
+  max-width: 960px;
+  min-width: 430px;
+  display: flex;
+  flex:auto;
+}
+.slider_content img{
+    width: 130px;
+    height: 200px;
+    /* margin-top: 20px; */
+    margin: 20px auto 0;
+    padding: 10px;
+    border-radius: 20px;
+}

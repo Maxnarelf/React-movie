@@ -1,4 +1,5 @@
 import React from "react";
+import '../../Styles/pagination.css'
 // import classNames from "classnames";
 
 export default class Pagination extends React.Component {
@@ -19,7 +20,7 @@ export default class Pagination extends React.Component {
   render() {
     const { page, total_pages } = this.props;
     return (
-      <nav className="d-flex align-items-center">
+      <nav className="pagin_group">
          
            <div className="btn-group">
                     <button 

@@ -56,25 +56,23 @@ export default class MoviesPage extends Component {
                     onChangeFilters={this.onChangeFilters} 
                     onChangePagination={this.onChangePagination}
                 /> 
-                    <div className="menu_left">
-                        <Genres with_genres={with_genres} onChangeFilters={this.onChangeFilters} />
-                    </div>
-                     
-                     <MoviesList
-                        filters={filters} 
-                        page={page} 
-                        
-                        onChangePagination={this.onChangePagination}
-                     />
-                     <Pagination
-                        
+                <div className="menu_left">
+                    <Genres with_genres={with_genres} onChangeFilters={this.onChangeFilters} />
+                </div>
+                <MoviesList
+                    filters={filters} 
+                    page={page} 
+                    onChangePagination={this.onChangePagination}
+                    />
+                <div className="pagin_bottom">
+                    <Pagination 
                         page={page}
                         total_pages={total_pages}
                         onChangePagination={this.onChangePagination}
                     />
-                    
                 </div>
-           
+            </div>
+                
         );
     }
 }
