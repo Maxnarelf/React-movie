@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import CallApi,{ API_KEY_3, IMG_URL } from '../../../api/api';
 import { Link } from 'react-router-dom';
+import '../../../index.css'
 
 export default class MoviePage extends Component {
     constructor(){
@@ -36,10 +37,10 @@ export default class MoviePage extends Component {
           }
          
         return (
-            
-                <div>
-                    <img width="920" height="518" src={`${IMG_URL}${movieData?.backdrop_path || movieData?.poster_path}`} alt={movieData} ></img>
-                    <h1>-\{movieData?.title}\-</h1>;
+            <div className="menu">
+                <div className="dev_body">
+                    <img className="det_img" src={`${IMG_URL}${movieData?.backdrop_path || movieData?.poster_path}`} alt={movieData} ></img>
+                    <h1 className="det_title">{movieData?.title}</h1>;
                     <Link to = "/" value= {movieData?.homepage}>Homepage</Link>
                     <span>-\DataRelease: {movieData?.release_date}\-</span>
                     <span>-\Genres: {getGenres()}\-</span>
@@ -56,9 +57,9 @@ export default class MoviePage extends Component {
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                         allowFullScreen
                     />
-                    
-    
-                </div>
-             )
+                 </div>   
+            </div>
+                
+        )
         }
 }

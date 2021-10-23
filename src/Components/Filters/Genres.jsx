@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {API_URL, API_KEY_3} from '../../api/api';
+import '../../Styles/genres.css'
 
 export default class Genres extends Component {
     constructor() {
@@ -49,10 +50,11 @@ export default class Genres extends Component {
         const { with_genres } = this.props;
         return (
         <React.Fragment>
-            <div>
+            <div className="genr">
+                <h2 className="genr_title">Жанры</h2>
             <button
                 type="button"
-                className="btn-outline-dark mb-2"
+                className="genr_btn"
                 onClick={this.resetGenres}
             >
                 Показать все жанры

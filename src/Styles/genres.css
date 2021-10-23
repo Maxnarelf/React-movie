@@ -1,0 +1,37 @@
+.genr {
+    /* border: 1px solid green; */
+   width: 100%;
+   margin-top: -10px;
+
+    
+}
+
+.genr_title {
+    font-size: 25px;
+    /* border: 1px solid #fff; */
+    padding: 2px;
+    padding-left: 8px;
+    margin-top: 0px;
+    
+}
+.genr_btn {
+    width: 80%;
+    height: 35px;
+    background-color: #303f52;
+    color: #aac2e0;
+    border-radius: 10px;
+    font-size: 16px;
+    padding: 5px;
+    margin: -15px 0 15px 0px;
+
+    font-weight: 600;
+    border: none;
+}
+
+.genr_btn:hover{
+    cursor: pointer;
+    background-color: #aac2e0cc;
+    color: #303f52;
+    transition: 0.5s;
+    
+}

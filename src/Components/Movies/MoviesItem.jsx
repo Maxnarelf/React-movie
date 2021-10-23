@@ -6,15 +6,16 @@ export default class MoviesItem extends Component {
     
     return (
       <div className="card" >
+        <Link to={`/movie/${item.id}`}>
         <img
           className="card_img"
           src={`https://image.tmdb.org/t/p/w500${item.backdrop_path ||
             item.poster_path}`}
           alt=""
-         
-        />
-        <div className="card-body">
-          <Link to={`/movie/${item.id}`} className="card-title">{item.title}</Link>
+         />
+         </Link>
+        <div className="card_body">
+          <Link to={`/movie/${item.id}`} className="card_title">{item.title}</Link>
           <div className="class">{item.release_date}</div>
           <div className="card-text">Рейтинг: {item.vote_average}</div>
           <div className="{}">
