@@ -49,9 +49,9 @@ export default class Slider extends Component {
         //   pagination={{clickable:true}}
           slidesPerColumnFill="row"
           slidesPerView={6}
-          
+          slidesPerColumn={6}
           spaceBetween={5}
-          breakpoints={{768: {slidesPerColumn: 1}, }}
+          breakpoints={{768: {slidesPerColumn: 4}, }}
         >{topmovies.map(topmovie => (
          <SwiperSlide key={topmovie.id} >
               <Link to={`/movie/${topmovie.id}`} className="card_movie">
