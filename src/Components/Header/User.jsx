@@ -33,6 +33,7 @@ class User extends Component {
            <div className="Container">
             <div className="Wrapper">
             <img src={`https://secure.gravatar.com/avatar/${auth.user.avatar.gravatar.hash}.jpg?s=64"`} alt=""
+                className="avatar"
                 onClick={this.toggleShow}/>
             
               {this.state.show && (

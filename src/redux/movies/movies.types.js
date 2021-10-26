@@ -1,0 +1,4 @@
+export const SET_MOVIES = "SET_MOVIES"
+export const SET_PAGINATION = "SET_PAGINATION"
+export const SET_FILTERS = "SET_FILTERS"
+export const SET_SEARCH_TEXT = "SET_SEARCH_TEXT"

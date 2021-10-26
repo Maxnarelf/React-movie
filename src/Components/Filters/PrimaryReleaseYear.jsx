@@ -11,25 +11,19 @@ export default class PrimaryReleaseYear extends React.PureComponent {
 
   static defaultProps = {
     options: [
-      {
-        label: "2021",
-        value: "2021"
-      },
-      {
-        label: "2020",
-        value: "2020"
-      },
-      {
-        label: "2019",
-        value: "2019"
-      },
-      {
-        label: "2018",
-        value: "2018"
-      }
-    ]
+        ...Array.from(
+            {length: Number(new Date().getFullYear()) - 1950 + 1},
+            (_, item) => {
+              const year = 1950 + item;
+              return {
+                label: `${year}`,
+                value: `${year}`
+              }
+            }
+          )
+    ].reverse()
   };
-
+  
  
   render() {
     const { primary_release_year, onChangeFilters, options } = this.props;

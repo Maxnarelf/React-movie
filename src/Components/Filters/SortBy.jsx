@@ -41,7 +41,7 @@ export default class SortBy extends Component {
                         onChange={onChangeFilters}
                     >
                         {options.map(option =>(
-                            <option classname="opt_sort" key={option.value} value={option.value}>{option.label}</option>
+                            <option className="opt_sort" key={option.value} value={option.value}>{option.label}</option>
                         ))}
                         
                     </select>

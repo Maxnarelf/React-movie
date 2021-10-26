@@ -1,22 +1,66 @@
 .slider{
+    
     width:100%;
     height: 250px;
     max-width: 958px;
     min-width: 430px;
     background-color: #090c10;
+    /* border: 1px solid green; */
 }
 .slider_content{
+    
+  
   width: 100%;
+  height: 100%;
   max-width: 960px;
   min-width: 430px;
-  display: flex;
-  flex:auto;
+ height: 250px;
+  display: flex; 
+  
+  /* border: 1px solid yellow; */
 }
-.slider_content img{
-    width: 130px;
+.slider_content_img{
+    
+    width: 135px;
     height: 200px;
-    /* margin-top: 20px; */
-    margin: 20px auto 0;
-    padding: 10px;
+   
+    padding: 0px;
     border-radius: 20px;
+    object-fit: cover;
+}
+
+
+.card_movie {
+    position: relative;
+    min-width: 0;
+    width: 150px;
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+    
+    
+    /* border: 1px solid orange; */
+}
+
+ .swiper-button-prev::after,
+ .swiper-button-next::after {
+    color: rgb(109, 80, 7);
+    font-size: 60px;
+    font-weight: 800;
+}
+
+.swiper-pagination {
+    margin-bottom: 10px;
+}
+.swiper-pagination-bullet {
+    width: 15px;
+    height: 15px;
+    line-height: 20px;
+    font-size: 14px;
+    background-color: rgb(109, 80, 7);
+}
+
+.swiper-scrollbar-drag {
+    cursor: pointer;
+    background-color:darkgoldenrod;
 }

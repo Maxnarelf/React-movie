@@ -1,20 +1,79 @@
-import React, { Component } from 'react'
-import '../../Styles/slider.css'
+import React, { Component } from "react";
+import CallApi, {  API_KEY_3 } from "../../api/api";
+import { Link } from "react-router-dom";
+import { Swiper, SwiperSlide } from 'swiper/react';
+import SwiperCore, {Navigation, Pagination, Scrollbar} from 'swiper';
+import 'swiper/swiper-bundle.css'
+
+// import 'swiper/css';
+import "../../Styles/slider.css";
+
+SwiperCore.use([ Navigation, Pagination, Scrollbar ]);
 
 export default class Slider extends Component {
-    render() {
-        return (
-            <div className="slider">
-                <div className="slider_content">
-                    <img src="https://hdseria.pw/uploads/posts/2020-08/1598803264-1427439175.jpg" alt="" />
-                    <img src="https://hdseria.pw/uploads/posts/2020-08/1598206041-1692729844.jpg" alt="" />
-                    <img src="https://hdseria.pw/uploads/posts/2020-08/1598203739-280901547.jpg" alt="" />
-                    <img src="https://hdseria.pw/uploads/posts/2020-08/1598802616-1249490426.jpg" alt="" />
-                    <img src="https://hdseria.pw/uploads/posts/2020-07/1595447027-66946981.jpg" alt="" />
-                    <img src="https://hdseria.pw/uploads/posts/2020-08/1598472913-1160298687.jpg" alt="" />
-                </div>
-            </div>
-        )
-    }
-}
+  constructor() {
+    super();
+    this.state = {
+      topmovies: [],
+    };
+  }
 
+  topMovies = (page) =>{
+      const queryStringParams = {
+        api_key: API_KEY_3,
+        language: "ru-RU",
+        page: page
+      }
+      CallApi.get(`/movie/upcoming`, {
+        params: queryStringParams
+      }).then((data) => {
+          this.setState({
+            topmovies: data.results
+          })
+      })
+  } 
+  componentDidMount() {
+      this.topMovies(this.props.page);
+    
+  }
+  render() {
+    const { topmovies } = this.state;
+    return (
+      <div className="slider">
+        <div className="slider_content">
+        
+        {/* <div className="section-container"> */}
+        <Swiper
+          
+          scrollbar={{draggable:true}}
+        //   pagination={{clickable:true}}
+          slidesPerColumnFill="row"
+          slidesPerView={6}
+          
+          spaceBetween={5}
+          breakpoints={{768: {slidesPerColumn: 1}, }}
+        >{topmovies.map(topmovie => (
+         <SwiperSlide key={topmovie.id} >
+              <Link to={`/movie/${topmovie.id}`} className="card_movie">
+              
+               <img
+                  className="slider_content_img"
+                  src={topmovie.poster_path
+                      ? `https://image.tmdb.org/t/p/w500${
+                        topmovie.poster_path  || topmovie.backdrop_path
+                        }`
+                      : ""
+                  }
+                  alt=""/>
+              </Link>
+              </SwiperSlide>
+            )
+        )}
+        </Swiper>
+        
+      </div>
+    </div>
+      
+    )
+  }
+}

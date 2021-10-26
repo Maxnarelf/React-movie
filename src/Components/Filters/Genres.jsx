@@ -7,7 +7,8 @@ export default class Genres extends Component {
         super();
     
         this.state = {
-          genresList: []
+          genresList: [],
+          disabled: false
         };
       }
     

@@ -13,6 +13,7 @@ export default class MoviePage extends Component {
     }
 
   componentDidMount() {
+      window.scroll(0,0)
     CallApi.get(`/movie/${this.props.match.params.id}?language=ru-RU&api_key=${API_KEY_3}&`)
     .then(data => {
         this.setState({movieData: data})
@@ -27,39 +28,67 @@ export default class MoviePage extends Component {
     }).catch(error => console.log('error', error));
   }
     render() {
-        const {videoKey, movieData} = this.state;
-        console.log('video promise', videoKey); 
-        const getCountries = () => {
-            return String(movieData?.production_countries?.map(({ name }) => name));
-          };
-          const getGenres = () => {
-            return String(movieData?.genres?.map(({ name }) => name));
-          }
-         
-        return (
-            <div className="menu">
-                <div className="dev_body">
-                    <img className="det_img" src={`${IMG_URL}${movieData?.backdrop_path || movieData?.poster_path}`} alt={movieData} ></img>
-                    <h1 className="det_title">{movieData?.title}</h1>;
-                    <Link to = "/" value= {movieData?.homepage}>Homepage</Link>
-                    <span>-\DataRelease: {movieData?.release_date}\-</span>
-                    <span>-\Genres: {getGenres()}\-</span>
-                    <span>-\Countries: {getCountries()}\-</span>
-                    <span>-\{movieData?.overview} \-</span>
-                    <span>-\{movieData?.vote_average} \-</span>
-                    <a href={`https://www.imdb.com/title/${movieData?.imdb_id}`} alt="">Movie page on IMDb </a>
-                    
-                    <iframe
-                        width="920" height="518"
-                        title="youtube-video"
-                        src={`https://www.youtube.com/embed/${videoKey}`}
-                        frameBorder="0"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                        allowFullScreen
-                    />
-                 </div>   
+      const { videoKey, movieData } = this.state;
+      console.log("video promise", videoKey);
+      const getCountries = () => {
+        return String(movieData?.production_countries?.map(({ name }) => name));
+      };
+      const getGenres = () => {
+        return String(movieData?.genres?.map(({ name }) => name));
+      };
+
+      return (
+        <div className="menu">
+          <div className="dev_body">
+            <img
+              className="det_img"
+              src={`${IMG_URL}${
+                movieData?.backdrop_path || movieData?.poster_path
+              }`}
+              alt={movieData}
+            ></img>
+            <h1 className="det_title">{movieData?.title}</h1>
+            <Link to="/" className="det_home" value={movieData?.homepage}>
+              &lsaquo;
+            </Link>
+            <div className="det_text">
+              <div className="det_tit_text">
+                Дата релиза:{" "}
+                <span className="det_span">{movieData?.release_date}</span>
+              </div>
+              <div className="det_tit_text">
+                Жанр: <span className="det_span">{getGenres()}</span>
+              </div>
+              <div className="det_tit_text">
+                Страна: <span className="det_span">{getCountries()}</span>
+              </div>
+              <div className="det_tit_text">
+                Рейтинг:{" "}
+                <span className="det_span">{movieData?.vote_average} из 10</span>
+              </div>
+              <div className="det_tit_text">
+                О фильме:{" "}
+                <span className="det_span">{movieData?.overview}</span>
+              </div>
             </div>
-                
-        )
-        }
+            <div className="imdb">
+              <a
+                href={`https://www.imdb.com/title/${movieData?.imdb_id}`}
+                alt=""
+              >
+                Movie page on IMDb{" "}
+              </a>
+            </div>
+            <iframe
+              className="det_video"
+              title="youtube-video"
+              src={`https://www.youtube.com/embed/${videoKey}`}
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+            />
+          </div>
+        </div>
+      );
+    }
 }

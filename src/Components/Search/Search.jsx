@@ -1,45 +1,49 @@
-import React, { Component } from 'react'
-import { API_KEY_3, API_URL } from '../../api/api'
-import '../../index.css'
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import { searchMovies as searchMoviesAction } from "../../redux/movies/movies.actions";
+import "../../index.css";
 
-export default class Search extends Component {
-    constructor(){
-        super()
-        this.state = {
-            movies: [],
-            searchTerm: ""
-        }
-    }
+class Search extends Component {
+  constructor() {
+    super();
+    this.state = {
+      searchTerm: ""
+    };
+  }
 
-    handleSubmit = (e) => {
-        e.preventDefault();
-        
-        fetch(`${API_URL}/search/movie?api_key=${API_KEY_3}&query=${this.state.searchTerm}`)
-        .then(response => response.json())
-        .then(data => {
-            this.setState({movies: [...data.results]})
-        })
-        
-    }
-    handleChange = (e) => {
-        
-       this.setState({searchTerm: e.target.value})
-    }
-    render() {
-        const {searchTerm} = this.state;
-        return (
-            <div>
-                 <form action="" onSubmit={this.handleSubmit}>
-                      <input 
-                        className="header_input" 
-                        type="search" 
-                        placeholder="Поиск" 
-                        value={searchTerm} 
-                        onChange={this.handleChange}
-                        />
-                </form>
-              
-            </div>
-        )
-    }
+  handleSubmit = (e) => {
+    const { searchMovies, page, filters } = this.props;
+    const { searchTerm } = this.state;
+    e.preventDefault();
+    searchMovies(searchTerm, page, filters);
+  };
+  handleChange = (e) => {
+    this.setState({ searchTerm: e.target.value });
+  };
+  render() {
+    const { searchTerm } = this.state;
+    return (
+      <div>
+        <form action="" onSubmit={this.handleSubmit}>
+          <input
+            className="header_input"
+            type="search"
+            placeholder="Поиск"
+            value={searchTerm}
+            onChange={this.handleChange}
+          />
+        </form>
+      </div>
+    );
+  }
 }
+
+const mapStateToProps = (state) => ({
+  page: state.movies.page,
+  filter: state.movies.filters,
+});
+const mapDispatchToProps = {
+  searchMovies: searchMoviesAction,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Search);

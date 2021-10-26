@@ -3,14 +3,15 @@ import User from './User';
 import Search from '../Search/Search';
 import { withAuth } from '../../hoc/withAuth';
 import { Link } from 'react-router-dom';
-import '../../Styles/header.css'
+import '../../Styles/header.css';
+import '../../index.css';
 
 class Header extends Component {
     
     render() {
         const { auth, authActions } =this.props
         return (
-            <div>
+            
                 <div className="container">
                     <div className="header">
                         <Link className="logo" to="/">
@@ -29,7 +30,7 @@ class Header extends Component {
                             
                     </div>
                 </div>
-            </div>
+            
         )
     }
 }
