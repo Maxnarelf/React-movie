@@ -23,8 +23,8 @@ class Search extends Component {
   render() {
     const { searchTerm } = this.state;
     return (
-      <div>
-        <form action="" onSubmit={this.handleSubmit}>
+      
+        <form action="" onSubmit={this.handleSubmit} className="header_label">
           <input
             className="header_input"
             type="search"
@@ -33,7 +33,7 @@ class Search extends Component {
             onChange={this.handleChange}
           />
         </form>
-      </div>
+      
     );
   }
 }

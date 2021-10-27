@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from "prop-types";
 import '../../Styles/selection.css'
+import { connect } from 'react-redux';
 
-export default class SortBy extends Component {
+class SortBy extends Component {
     static propTypes = {
         sort_by: PropTypes.string.isRequired,
         onChangeFilters:  PropTypes.func.isRequired
@@ -28,18 +29,20 @@ export default class SortBy extends Component {
         ]
     }
     render() {
-        const {sort_by, onChangeFilters, options} = this.props;
+        const {sort_by, onChangeFilters, options, searchText} = this.props;
         
         return (
-            <div className="sort_filter">
-                    <label htmlFor="sort_by"></label>
+
+            <div className="sort_by" style={{opacity: searchText ? 0.3 : 1}}>
+                    
                     <select 
                         id="sort_by"
                         className="sel_style"  
                         name="sort_by"
                         value={sort_by}
                         onChange={onChangeFilters}
-                    >
+                        disabled={searchText}
+                    >   
                         {options.map(option =>(
                             <option className="opt_sort" key={option.value} value={option.value}>{option.label}</option>
                         ))}
@@ -49,3 +52,10 @@ export default class SortBy extends Component {
           )
     }
 }
+
+
+
+const mapStateToProps = (state) => ({
+    searchText: state.movies.searchText
+})
+export default connect(mapStateToProps)(SortBy)

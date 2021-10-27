@@ -46,10 +46,10 @@ class MoviesList extends React.Component {
   render() {
     const { movies } = this.props;
     return (
-      <div className="context">
+      <div className="listmenu">
         {movies.map((movie) => {
           return (
-            <div key={movie.id}>
+            <div key={movie.id} className="listmenu_item">
               <MoviesItem item={movie} />
             </div>
           );

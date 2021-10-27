@@ -1,40 +1,41 @@
 .header{
-    
+    width:100%;
     max-width: 960px;
     min-width: 430px;
     display: flex;
     justify-content: space-between;
     flex: 0 0 auto;
-    padding: 10px;
-    margin-top: -50px;
+    padding: 10px 0px;
     border-radius: 20px 20px 0 0 ;
-    /* color: #fff; */
     font-family: Uni Sans;
     background-color: #121820;
-    
     /* border: 1px solid goldenrod; */
     
 }
-@media (max-width: 960px){
+/* @media screen and (max-width: 960px){
     
     .header {max-width: 750px;}
     .header_input{max-width: 400px;}
     .btn_header{max-width: 80px;}
     .logo{max-width: 130px;}
+} */
+
+.header_label{
+    width:100%;
+   
 }
 .header_input{
-    width: 600px;
+    
+    width: 100%;
     height: 35px;
     margin-top: 8px;
-    
     background: #303f52;
     color: #aac2e0;
     box-shadow: 0 10px 16px 0 rgb(0 0 0 / 30%);
     border-radius: 10px;
-    box-sizing: border-box;
     border: none;
     outline: none;
-    padding-left: 10px;
+    
 }
 
 .header_input::placeholder {
@@ -48,17 +49,17 @@
      
   }
 .btn_header{
-    width: 120px;
+    width:15%;
     height: 40px;
     background-color: goldenrod;
     border-radius: 15px;
     font-size: 18px;
     padding: 5px;
-    margin-top: 5px;
-    margin-left: 15px;
-    margin-right: 15px;
+    margin: 5px 15px;
+    
     font-weight: 600;
     border: none;
+    
     
 }
 .btn_header:hover{
@@ -73,7 +74,7 @@
 }
 
 .logo{
-    width: 150px;
+    width: 20%;
     height: 35px;
     display:flex;
     justify-content: center;

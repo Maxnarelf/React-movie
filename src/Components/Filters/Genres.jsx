@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import {API_URL, API_KEY_3} from '../../api/api';
 import '../../Styles/genres.css'
 
-export default class Genres extends Component {
+class Genres extends Component {
     constructor() {
         super();
     
@@ -48,35 +49,48 @@ export default class Genres extends Component {
       };
     render() {
         const { genresList } = this.state;
-        const { with_genres } = this.props;
+        const { with_genres, searchText } = this.props;
         return (
-        <React.Fragment>
-            <div className="genr">
+        <div className="genr_block" style={{opacity: searchText ? 0.3 : 1}} >
+            
                 <h2 className="genr_title">Жанры</h2>
             <button
                 type="button"
                 className="genr_btn"
                 onClick={this.resetGenres}
+                disabled={searchText}
             >
                 Показать все жанры
             </button>
-            </div>
+            
+            
             {genresList.map(genre => (
-            <div key={genre.id} className="form-check">
+         
+            <div key={genre.id} >
                 <input
-                    className="form-check-input"
+                    
                     type="checkbox"
                     value={genre.id}
                     id={`genre${genre.id}`}
                     onChange={this.onChange}
                     checked={with_genres.includes(String(genre.id))}
+                    disabled={searchText}
                 />
                 <label className="form-check-label" htmlFor={`genre${genre.id}`}>
                     {genre.name}
                 </label>
             </div>
+        
             ))}
-        </React.Fragment>
+        </div>
+        
     );
   }
 }
+
+
+const mapStateToProps = (state) => ({
+    searchText: state.movies.searchText
+})
+
+export default connect(mapStateToProps)(Genres)

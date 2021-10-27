@@ -35,7 +35,7 @@ export default class PrimaryReleaseYear extends React.PureComponent {
         value={primary_release_year}
         onChange={onChangeFilters}
         labelText="Год релиза:"
-        className="year"
+        
       >
         {options.map(option => (
           <option key={option.value} value={option.value}>

@@ -16,6 +16,7 @@ export default class UISelect extends React.Component {
     return (
       <div className="year_block">
         <label  className="year" htmlFor={id}>{labelText}</label>
+        <div class="left_sel">
         <select
           id={id}
           className="sel_style"
@@ -25,6 +26,7 @@ export default class UISelect extends React.Component {
         >
           {children}
         </select>
+        </div>
       </div>
     );
   }
