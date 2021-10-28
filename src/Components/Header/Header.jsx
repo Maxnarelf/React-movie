@@ -3,6 +3,7 @@ import User from "./User";
 import Search from "../Search/Search";
 import { withAuth } from "../../hoc/withAuth";
 import { Link } from "react-router-dom";
+import oskar from './oskar11.png'
 import "../../Styles/header.css";
 import "../../index.css";
 
@@ -12,9 +13,10 @@ class Header extends Component {
     return (
       <div className="header">
         <Link className="logo" to="/">
+          <img src={oskar} alt="" />
           React-movies
         </Link>
-        <Search />
+        <Search /> 
         {auth?.user ? (
           <User />
         ) : (

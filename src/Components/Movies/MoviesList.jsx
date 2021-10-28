@@ -14,13 +14,20 @@ class MoviesList extends React.Component {
     getMovies(filters, page);
   }
   componentDidUpdate(prevProps) {
-    const {getMovies, filters, page, changePagination, searchText, searchMovies} = this.props;
+    const {
+      getMovies,
+      filters,
+      page,
+      changePagination,
+      searchText,
+      searchMovies,
+    } = this.props;
     if (filters !== prevProps.filters) {
-      if(searchText?.length > 0 ) {
+      if (searchText?.length > 0) {
         searchMovies(searchText, 1, filters);
-      } else{
-      getMovies(filters, 1);
-      }  
+      } else {
+        getMovies(filters, 1);
+      }
       changePagination(1);
     }
     if (page !== prevProps.page) {
@@ -30,18 +37,21 @@ class MoviesList extends React.Component {
         getMovies(filters, page);
       }
     }
-    if (filters.primary_release_year !== prevProps.filters.primary_release_year) {
+    if (
+      filters.primary_release_year !== prevProps.filters.primary_release_year
+    ) {
       if (searchText?.length > 0) {
-        searchMovies(searchText, 1, filters) 
+        searchMovies(searchText, 1, filters);
       } else {
-      getMovies(filters, 1);
-     }
-     changePagination(1);
+        getMovies(filters, 1);
+      }
+      changePagination(1);
     }
     if (filters.with_genres !== prevProps.filters.with_genres) {
       getMovies(filters, page);
+      changePagination(1);
     }
-    window.scroll(0,0);
+    window.scroll(0, 0);
   }
   render() {
     const { movies } = this.props;

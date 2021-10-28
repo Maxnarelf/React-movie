@@ -14,35 +14,28 @@ export default class MoviePage extends Component {
 
   componentDidMount() {
     window.scroll(0, 0);
+    const {match: {params: { id }}} = this.props;
     CallApi.get(
-      `/movie/${this.props.match.params.id}?language=ru-RU&api_key=${API_KEY_3}&`
+      `/movie/${id}?language=ru-RU&api_key=${API_KEY_3}&`
     ).then((data) => {
       this.setState({ movieData: data });
-      console.log("data promise", data);
     });
-    CallApi.get(`/movie/${this.props.match.params.id}/videos`)
+    CallApi.get(`/movie/${id}/videos`)
       .then((data) => {
-        console.log("array", data.results[0].key);
         this.setState({ videoKey: data.results[0].key });
       })
       .catch((error) => console.log("error", error));
   }
   componentDidUpdate(prevProps) {
-    const {
-      match: {
-        params: { id },
-      },
-    } = this.props || {};
+    const {match: {params: { id }}} = this.props || {};
     if (id !== prevProps.match.params.id) {
       CallApi.get(
-        `/movie/${this.props.match.params.id}?language=ru-RU&api_key=${API_KEY_3}&`
+        `/movie/${id}?language=ru-RU&api_key=${API_KEY_3}&`
       ).then((data) => {
         this.setState({ movieData: data });
-        console.log("data promise", data);
       });
-      CallApi.get(`/movie/${this.props.match.params.id}/videos`)
+      CallApi.get(`/movie/${id}/videos`)
         .then((data) => {
-          console.log("array", data.results[0].key);
           this.setState({ videoKey: data.results[0].key });
         })
         .catch((error) => console.log("error", error));
@@ -50,7 +43,6 @@ export default class MoviePage extends Component {
   }
   render() {
     const { videoKey, movieData } = this.state;
-    console.log("video promise", videoKey);
     const getCountries = () => {
       return String(movieData?.production_countries?.map(({ name }) => name));
     };
@@ -60,6 +52,9 @@ export default class MoviePage extends Component {
 
     return (
       <div className="menu">
+        <Link to="/" className="det_home" value={movieData?.homepage}>
+            &lsaquo;
+          </Link>
         <div className="dev_body">
           <img
             className="det_img"
@@ -69,9 +64,6 @@ export default class MoviePage extends Component {
             alt={movieData}
           ></img>
           <h1 className="det_title">{movieData?.title}</h1>
-          <Link to="/" className="det_home" value={movieData?.homepage}>
-            &lsaquo;
-          </Link>
           <div className="det_text">
             <div className="det_tit_text">
               Дата релиза:{" "}

@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import SortBy from "./SortBy";
 import PrimaryReleaseYear from "./PrimaryReleaseYear";
 import Pagination from "./Pagination";
-// import Genres from './Genres';
 import "../../index.css";
 import { connect } from "react-redux";
 import {

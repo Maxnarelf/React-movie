@@ -5,7 +5,6 @@ const initialState = {
   user: null,
   session_id: cookies.get("session_id"),
   showLoginModal: false,
-  favoriteMovies: []
 };
 
 const authReducer = (state = initialState, action) => {
@@ -15,24 +14,17 @@ const authReducer = (state = initialState, action) => {
         ...state,
         user: action.payload.user,
         session_id: action.payload.session_id,
-        
       };
     case types.LOGOUT:
       return {
         ...state,
         session_id: null,
         user: null,
-        
       };
-      case types.TOGGLE_LOGIN_MODAL:
+    case types.TOGGLE_LOGIN_MODAL:
       return {
         ...state,
-        showLoginModal: !state.showLoginModal
-      };
-    case types.UPDATE_FAVORITE_MOVIES:
-      return {
-        ...state,
-        favoriteMovies: action.payload
+        showLoginModal: !state.showLoginModal,
       };
     default:
       return state;

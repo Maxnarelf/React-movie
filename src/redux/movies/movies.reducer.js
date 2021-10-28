@@ -1,4 +1,9 @@
-import { SET_MOVIES, SET_PAGINATION, SET_FILTERS, SET_SEARCH_TEXT } from "./movies.types";
+import {
+  SET_MOVIES,
+  SET_PAGINATION,
+  SET_FILTERS,
+  SET_SEARCH_TEXT,
+} from "./movies.types";
 
 const initialState = {
   movies: [],
@@ -9,7 +14,7 @@ const initialState = {
     primary_release_year: "new Date().getFullYear()",
     with_genres: [],
   },
-  searchText: '',
+  searchText: "",
 };
 
 const moviesReducer = (state = initialState, action) => {
@@ -26,19 +31,19 @@ const moviesReducer = (state = initialState, action) => {
         total_pages: action.total_pages,
       };
     case SET_FILTERS:
-      const {value, name} = action.event.target;
-      return{
+      const { value, name } = action.event.target;
+      return {
         ...state,
         filters: {
           ...state.filters,
-          [name]: value
-        }
-      }
-      case SET_SEARCH_TEXT:
-        return {
-          ...state,
-          searchText: action.text
-        };
+          [name]: value,
+        },
+      };
+    case SET_SEARCH_TEXT:
+      return {
+        ...state,
+        searchText: action.text,
+      };
     default:
       return state;
   }
