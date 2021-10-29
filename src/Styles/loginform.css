@@ -1,0 +1,99 @@
+.loginform {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  /* border: 1px solid red; */
+}
+
+.loginform h1 {
+  width: 100%;
+  font-size: 30px;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  padding: 0px;
+  margin: 0px;
+  /* border: 1px solid green; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #aac2e0;
+  padding-bottom: 10px;
+}
+
+.loginform label {
+  width: 100%;
+  margin-left: 0px;
+  padding: 0px 5px 5px 5px;
+  font-size: 20px;
+  /* border: 1px solid yellow; */
+  color: #aac2e0;
+}
+
+.loginform_input {
+  width: 300px;
+  height: 35px;
+  margin: 0px 0 5px 0px;
+  /* border: 1px solid rgb(255, 0, 242); */
+  background: #303f52;
+  color: #aac2e0;
+  box-shadow: 0 10px 16px 0 rgb(0 0 0 / 30%);
+  border-radius: 10px;
+  box-sizing: border-box;
+  border: none;
+  outline: none;
+  padding-left: 10px;
+  margin-bottom: 20px;
+}
+
+.loginform_input::placeholder {
+  color: #aac2e0;
+  font-size: 14px;
+  opacity: 0.5;
+}
+
+.loginform_input:focus::placeholder {
+  opacity: 0;
+  border: none;
+}
+
+.loginform_input.invalid {
+  border: 1px solid red;
+  border-radius: 10px;
+}
+
+.loginform_btn {
+  width: 100%;
+  height: 35px;
+  background-color: #303f52;
+  color: #aac2e0;
+  border-radius: 10px;
+  font-size: 18px;
+  padding: 5px;
+  margin-top: 10px;
+  margin-right: 20px;
+  font-weight: 600;
+  border: none;
+}
+
+.loginform_btn:hover {
+  cursor: pointer;
+  background-color: #aac2e0cc;
+  color: #303f52;
+  transition: 0.5s;
+}
+
+.invalid_input {
+  font-size: 13px;
+  color: red;
+  margin-top: -21px;
+  margin-left: 5px;
+  padding: 2px;
+}
+
+.invalid_btn {
+  font-size: 14px;
+  color: red;
+  margin-left: 5px;
+  padding: 2px;
+  text-align: center;
+}
