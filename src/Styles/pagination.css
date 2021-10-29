@@ -1,0 +1,31 @@
+.pagin_group {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  /* border: 1px solid red; */
+}
+
+.btn-group {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 50px;
+  /* border: 1px solid red; */
+}
+
+.btn {
+  width: 40px;
+  border: none;
+  background: transparent;
+  color: goldenrod;
+  font-size: 50px;
+  text-align: center;
+  outline: none;
+  opacity: 0.5;
+  transition: opacity 300ms ease-out;
+}
+
+.btn:hover {
+  opacity: 1;
+}
